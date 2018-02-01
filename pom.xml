@@ -1,0 +1,31 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.dubbo.learning</groupId>
+	<artifactId>dubbo-learning-parent</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	
+	<properties>
+		<junit_version>4.12</junit_version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit_version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	
+	
+	<modules>
+		<module>dubbo-learning-common</module>
+		<module>dubbo-learning-provider</module>
+		<module>dubbo-learning-consumer</module>
+	</modules>
+
+</project>

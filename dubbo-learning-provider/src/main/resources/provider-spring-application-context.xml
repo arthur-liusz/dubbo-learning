@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.2.xsd
+    http://code.alibabatech.com/schema/dubbo
+    classpath:dubbo.xsd">
+    
+    <dubbo:application name="dubbo-learning-provider"/>
+    <!-- <dubbo:registry address="multicast://224.5.6.7:1234"/> -->
+    <!-- <dubbo:registry address="zookeeper://172.16.7.197:2181" client="zkclient"/> -->
+    <dubbo:registry protocol="zookeeper" address="172.16.7.197:2181,172.16.7.197:2182,172.16.7.197:2183" client="zkclient"/>
+    <dubbo:protocol name="dubbo" port="20880"/>
+    
+    <dubbo:monitor protocol="registry"/>
+    
+	<bean id="demoService" class="com.dubbo.learning.provider.service.impl.DemoServiceImpl" />
+	<dubbo:service interface="com.dubbo.learning.common.service.DemoService" ref="demoService" />
+	
+	<bean id="exampleService" class="com.dubbo.learning.provider.service.impl.ExampleServiceImpl" />
+	<dubbo:service interface="com.dubbo.learning.common.service.ExampleService" ref="exampleService" />
+</beans>
